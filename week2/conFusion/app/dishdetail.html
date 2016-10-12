@@ -44,11 +44,9 @@
                 </div> 
             </div>
             <div class="col-xs-9 col-xs-offset-1">
-                 <div class="row">
-                   
+                 <div class="row">                   
                    <p> <strong>Customer Comments</strong>    Sort by: <input type="text" ng-model="sortfilter"> 
-                   </p>
-                
+                   </p>           
                 
                     <ul class="media-list">
                         <li class="media" ng-repeat="cmt in dish.comments|orderBy:sortfilter">
@@ -67,8 +65,9 @@
                       </div>
            </div>
             <div class="col-xs-9 col-xs-offset-1" ng-controller="DishCommentController">
+                <div class="row">
                     <ul class="list-unstyled">
-					             <li class="media">
+					   <li class="media">
                             <blockquote class="media-body" ng-show="!commentForm.commentcontent.$pristine && !commentForm.author.$pristine" >
                             <p>{{commentitem.rating}} Stars</p>
                             <p>{{commentitem.comment}}</p>
@@ -77,6 +76,7 @@
                         </li>
             
                     </ul>
+                </div>
                 <form class="form-horizontal" name="commentForm"
                 		ng-submit="submitComment()" novalidate>
 					<div class="form-group" ng-class="{'has-error':commentForm.author.$error.required && !commentForm.author.$pristine}">
