@@ -80,7 +80,8 @@
         </div>
     </header>
     
-    <ng-include src="'menu.html'"></ng-include>  <!-- include Angular templates as a string 'meanu.html' -->     
+    <!-- <ng-include src="'menu.html'"></ng-include> --> <!-- include Angular templates as a string 'meanu.html' -->     
+    <ng-view></ng-view>  <!-- use ngrouter's templateUrl html -->
 
     <footer class="row-footer">
         <div class="container">
@@ -127,9 +128,12 @@
 
 <!-- build:js scripts/main.js -->
     <script src="../bower_components/angular/angular.min.js"></script>
+    <!-- ng-route -->
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>  
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers.js"></script>
     <script src="scripts/services.js"></script>
+
 <!-- endbuild -->
 
 </body>
