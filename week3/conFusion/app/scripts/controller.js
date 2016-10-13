@@ -94,15 +94,15 @@ angular.module('confusionApp')
         }])
 
         .controller('IndexController', ['$scope', 'corporateFactory', 'menuFactory', function($scope, corporateFactory, menuFactory){
-            var promotion = meanuFactory.getPromotion(0);
-            //var featuredish = meanuFactory.getDish(0);
+            var promotion = menuFactory.getPromotion(0);
+            var featuredish = menuFactory.getDish(0);
             var executivechef = corporateFactory.getLeader(3);
             $scope.promotion = promotion;
             $scope.featuredish = featuredish;
             $scope.executivechef = executivechef;
         }])
 
-        .controller('AboutController', ['$scope', 'corporateFactory', 'menuFactory', function($scope, corporateFactory, menuFactory){
+        .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory){
             
             $scope.leaders = corporateFactory.getLeaders();
         }]);

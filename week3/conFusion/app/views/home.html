@@ -6,7 +6,16 @@
                 <h3 align=center>Our Lipsmacking Culinary Creations</h3>
             </div>
             <div class="col-xs-12 col-sm-9 col-sm-pull-3">
-				<h4>Implement the Featured Dish Here</h4>
+				 <div class="media-left media-middle">
+                    <img class="media-object img-thumbnail"
+                         ng-src={{featuredish.image}} alt={{featuredish.name}}>
+                  </div>
+                <div class="media-body">
+                        <h2 class="media-heading">{{featuredish.name}}
+                         <span class="label label-danger">{{featuredish.label}}</span>
+                         <span class="badge">{{featuredish.price | currency}}</span></h2>
+                         <p>{{featuredish.description}}</p>
+                </div>
             </div>
         </div>
 
@@ -17,7 +26,16 @@
                 <h3 align=center>This Month's Promotions</h3>
             </div>
             <div class="col-xs-12 col-sm-9">
-				<h4>Implement the Promotion Here</h4>
+				<div class="media-body">
+                        <h2 class="media-heading">{{promotion.name}}
+                         <span class="label label-danger">{{promotion.label}}</span>
+                         <span class="badge">{{promotion.price | currency}}</span></h2>
+                         <p>{{promotion.description}}</p>
+                  </div>
+                 <div class="media-middle media-right">
+                    <img class="media-object img-thumbnail"
+                         ng-src={{promotion.image}} alt={{promotion.name}}>
+                </div>
             </div>
         </div>
 
@@ -27,7 +45,16 @@
                 <h3 align=center>Meet our Culinary Specialists</h3>
             </div>
             <div class="col-xs-12 col-sm-9 col-sm-pull-3">
-				<h4>Implement the Executive Chef Info Here</h4>
+				 <div class="media-left media-middle">
+                    <img class="media-object img-thumbnail"
+                         ng-src={{exectivechef.image}} alt={{exectivechef.name}}>
+                     
+                  </div>
+                <div class="media-body">
+                    <h3 class="media-heading">{{exectivechef.name}}
+                    <small>{{exectivechef.designation}}</small></h2>
+                    <p>{{exectivechef.description}}</p>
+                </div>
             </div>
         </div>
     </div>
