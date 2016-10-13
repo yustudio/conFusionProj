@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 angular.module('confusionApp', ['ngRoute'])
 .config(function($routeProvider) {
         $routeProvider
@@ -18,4 +18,4 @@ angular.module('confusionApp', ['ngRoute'])
                 controller  : 'DishDetailController'
             })
             .otherwise('/contactus');
-    })
+    });

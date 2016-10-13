@@ -1,6 +1,6 @@
-'use strict';
+//"use strict";
 
-angular.module('confusionApp', [])
+angular.module('confusionApp')
 
          .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
             
@@ -53,7 +53,7 @@ angular.module('confusionApp', [])
                 
                 console.log($scope.feedback);
                 
-                if ($scope.feedback.agree && ($scope.feedback.mychannel == "")) {
+                if ($scope.feedback.agree && ($scope.feedback.mychannel === "")) {
                     $scope.invalidChannelSelection = true;
                     console.log('incorrect');
                 }
@@ -88,11 +88,9 @@ angular.module('confusionApp', [])
                else {
                   $scope.commentitem.date = new Date().toISOString();
                   $scope.dish.comments.push($scope.commentitem);
-                  $scope.commentForm.$setPristine;
+                  $scope.commentForm.$setPristine();
                   $scope.commentitem={author:"",date:"",rating:"5", comment:""};
                   console.log(commentitem);
                }
-            }
-        }])
-
-;
+            };
+        }]);
