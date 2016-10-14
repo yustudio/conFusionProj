@@ -1,22 +1,14 @@
-'use strict';
+//"use strict";
 
 angular.module('confusionApp')
 
-        .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
+         .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
             
             $scope.tab = 1;
             $scope.filtText = '';
             $scope.showDetails = false;
 
-            //$scope.dishes= menuFactory.getDishes();
-
-            $scope.dishes= [];
-            menuFactory.getDishes()
-            .then(
-                function(response) {
-                    $scope.dishes = response.data;
-                }
-            );
+           $scope.dishes= menuFactory.getDishes();
                         
             $scope.select = function(setTab) {
                 $scope.tab = setTab;
@@ -61,7 +53,7 @@ angular.module('confusionApp')
                 
                 console.log($scope.feedback);
                 
-                if ($scope.feedback.agree && ($scope.feedback.mychannel == "")) {
+                if ($scope.feedback.agree && ($scope.feedback.mychannel === "")) {
                     $scope.invalidChannelSelection = true;
                     console.log('incorrect');
                 }
@@ -76,61 +68,25 @@ angular.module('confusionApp')
         }])
 
         .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
-
-//            var dish= menuFactory.getDish(parseInt($stateParams.id,10));
-//            
-//            $scope.dish = dish;
-            
-            $scope.dish = {};
-            menuFactory.getDish(parseInt($stateParams.id,10))
-            .then(
-                function(response){
-                    $scope.dish = response.data;
-                    $scope.showDish=true;
-                }
-            );
-            
-        }])
+            var dish= menuFactory.getDish(parseInt($stateParams.id,10));
+                        $scope.dish = dish;
+                    }])
 
         .controller('DishCommentController', ['$scope', function($scope) {
             
-            $scope.mycomment = {rating:5, comment:"", author:"", date:""};
+            $scope.commentitem={author:"", date:"", rating:"5", comment:""};
             
             $scope.submitComment = function () {
-                
-                $scope.mycomment.date = new Date().toISOString();
-                console.log($scope.mycomment);
-                
-                $scope.dish.comments.push($scope.mycomment);
-                
-                $scope.commentForm.$setPristine();
-                
-                $scope.mycomment = {rating:5, comment:"", author:"", date:""};
-            }
-        }])
-
-        .controller('IndexController', ['$scope', 'corporateFactory', 'menuFactory', function($scope, corporateFactory, menuFactory){
-            
-            //var featuredish = menuFactory.getDish(0);
-            $scope.featuredish = {};
-
-            menuFactory.getDish(0)
-            .then(   // handles promise if successful
-                function(response){
-                    $scope.featuredish = response.data;
-                    $scope.showDish = true;
-                }
-            );
-            var promotion = menuFactory.getPromotion(0);
-            var executivechef = corporateFactory.getLeader(3);
-            $scope.promotion = promotion;
-            //$scope.featuredish = featuredish;
-            $scope.executivechef = executivechef;
-        }])
-
-        .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory){
-            
-            $scope.leaders = corporateFactory.getLeaders();
+               console.log($scope.commentitem);
+               if ($scope.commentitem.author==="" || $scope.commentitem.comment===""){
+                  console.log('incorrect');
+               }
+               else {
+                  $scope.commentitem.date = new Date().toISOString();
+                  $scope.dish.comments.push($scope.commentitem);
+                  $scope.commentForm.$setPristine();
+                  $scope.commentitem={author:"",date:"",rating:"5", comment:""};
+                  console.log(commentitem);
+               }
+            };
         }]);
-
-;

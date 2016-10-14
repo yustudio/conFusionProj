@@ -43,34 +43,13 @@ gulp.task('usemin',['jshint'], function () {
 });
 
 gulp.task('usemin',['jshint'], function () {
-  return gulp.src('./app/*.html')
+  return gulp.src('./app/**/*.html')
       .pipe(usemin({
         css:[minifycss(),rev()],
         js: [ngannotate(),uglify(),rev()]
       }))
       .pipe(gulp.dest('dist/'));
 });
-
-gulp.task('usemin',['jshint'], function () {
-  return gulp.src('./app/views/*.html')
-      .pipe(usemin({
-        css:[minifycss(),rev()],
-        js: [uglify(),rev()]
-      }))
-      .pipe(gulp.dest('dist/views'));
-});
-
-gulp.task('usemin',['jshint'], function () {
-  return gulp.src('./app/views/*.html')
-      .pipe(usemin({
-        css:[minifycss(),rev()],
-        js: [ngannotate(),uglify(),rev()]
-      }))
-      .pipe(gulp.dest('dist/views'));
-});
-
-
-
 
 // Images
 gulp.task('imagemin', function() {
