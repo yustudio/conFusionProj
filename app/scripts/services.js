@@ -2,7 +2,7 @@
 
 angular.module('confusionApp')
         .constant("baseURL","http://localhost:3000/")
-        .service('menuFactory', ['$http','baseURL',function($http,baseURL) {
+        .service('menuFactory', ['$resource', '$http','baseURL',function($resource,$http,baseURL) {
     
 //            var dishes=[
 //                         {
@@ -190,14 +190,18 @@ angular.module('confusionApp')
                     
                     //return dishes;
                     
-                    return $http.get(baseURL+"dishes");  // returns a promise
+                    //return $http.get(baseURL+"dishes");  // returns a promise
+
+                    this.getDishes = function(){
+                        return $resource(baseURL+"dishes/:id",null,  {'update':{method:'PUT' }});
+                    };
                 };
     
-                this.getDish = function (index) {
+                // this.getDish = function (index) {
                     
-                    //return dishes[index];
-                     return $http.get(baseURL+"dishes/"+index);
-                };
+                //     //return dishes[index];
+                //      return $http.get(baseURL+"dishes/"+index);
+                // };
     
                 this.getPromotion = function(index) {
                   return promotions[index];
