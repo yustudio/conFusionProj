@@ -10,11 +10,17 @@ angular.module('confusionApp')
 
             //$scope.dishes= menuFactory.getDishes();
 
-            $scope.dishes= [];
+            $scope.showMenu = false;
+            $scope.message = "Loading ...";
+            $scope.dishes= {};
             menuFactory.getDishes()
             .then(
                 function(response) {
                     $scope.dishes = response.data;
+                    $scope.showMenu = true;
+                },
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
                 }
             );
                         
@@ -82,11 +88,16 @@ angular.module('confusionApp')
 //            $scope.dish = dish;
             
             $scope.dish = {};
+            $scope.showDish = false;
+            $scope.message="Loading ...";
             menuFactory.getDish(parseInt($stateParams.id,10))
             .then(
                 function(response){
                     $scope.dish = response.data;
                     $scope.showDish=true;
+                },
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
                 }
             );
             
@@ -114,11 +125,17 @@ angular.module('confusionApp')
             //var featuredish = menuFactory.getDish(0);
             $scope.featuredish = {};
 
+            $scope.showDish = false;
+            $scope.message="Loading ...";
+
             menuFactory.getDish(0)
-            .then(   // handles promise if successful
+            .then(
                 function(response){
                     $scope.featuredish = response.data;
                     $scope.showDish = true;
+                },
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
                 }
             );
             var promotion = menuFactory.getPromotion(0);
