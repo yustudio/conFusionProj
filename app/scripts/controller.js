@@ -148,10 +148,10 @@ angular.module('confusionApp')
             $scope.showDish = false;
             $scope.message="Loading ...";
 
-             $scope.dish = menuFactory.getDishes().get({id:0})
+            menuFactory.getDishes().get({id:0})
                 .$promise.then(
                     function(response){
-                        $scope.dish = response;
+                        $scope.featuredish = response;
                         $scope.showDish = true;
                     },
                     function(response) {
