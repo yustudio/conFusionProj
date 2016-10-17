@@ -182,10 +182,23 @@ angular.module('confusionApp')
                     }
                 );
 
-            var executivechef = corporateFactory.getLeader(3);
+            $scope.showChef = false;
+            $scope.messageChef="Loading ...";
+            menuFactory.getLeaders().get({id:0})
+                .$promise.then(
+                    function(response){
+                        $scope.executivechef = response;
+                        $scope.showChef = true;
+                    },
+                    function(response) {
+                        $scope.messageChef = "Error: "+response.status + " " + response.statusText;
+                    }
+                );
+
+           //var executivechef = corporateFactory.getLeader(3);
             //$scope.promotion = promotion;
             //$scope.featuredish = featuredish;
-            $scope.executivechef = executivechef;
+            //$scope.executivechef = executivechef;
         }])
 
         .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory){
