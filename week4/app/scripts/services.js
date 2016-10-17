@@ -186,7 +186,7 @@ angular.module('confusionApp')
                 
             ];
     
-                this.getDishes = function(){
+                //this.getDishes = function(){
                     
                     //return dishes;
                     
@@ -195,7 +195,7 @@ angular.module('confusionApp')
                     this.getDishes = function(){
                         return $resource(baseURL+"dishes/:id",null,  {'update':{method:'PUT' }});
                     };
-                };
+                
     
                 // this.getDish = function (index) {
                     
