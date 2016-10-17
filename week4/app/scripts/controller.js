@@ -168,9 +168,22 @@ angular.module('confusionApp')
             //         $scope.message = "Error: "+response.status + " " + response.statusText;
             //     }
             // );
-            var promotion = menuFactory.getPromotion(0);
+            //var promotion = menuFactory.getPromotion(0);
+            $scope.showPromoted = false;
+            $scope.messagePromotion="Loading ...";
+            menuFactory.getPromotion().get({id:0})
+                .$promise.then(
+                    function(response){
+                        $scope.promotion = response;
+                        $scope.showPromoted = true;
+                    },
+                    function(response) {
+                        $scope.messagePromotion = "Error: "+response.status + " " + response.statusText;
+                    }
+                );
+
             var executivechef = corporateFactory.getLeader(3);
-            $scope.promotion = promotion;
+            //$scope.promotion = promotion;
             //$scope.featuredish = featuredish;
             $scope.executivechef = executivechef;
         }])

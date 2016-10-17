@@ -204,8 +204,9 @@ angular.module('confusionApp')
                 // };
     
                 this.getPromotion = function(index) {
-                  return promotions[index];
+                  //return promotions[index];
                   //return $resource(baseURL+"dishes/"+index, null, {'update'})
+                  return $resource(baseURL+"dishes/:id",null,  {'update':{method:'PUT' }});
                 }    
                         
         }])
