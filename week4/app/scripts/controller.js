@@ -68,7 +68,7 @@ angular.module('confusionApp')
                         
         }])
 
-        .controller('FeedbackController', ['$scope', function($scope) {
+        .controller('FeedbackController', ['$scope', 'feedbackFactory', function($scope, feedbackFactory) {
             
             $scope.sendFeedback = function() {
                 
@@ -80,6 +80,7 @@ angular.module('confusionApp')
                 }
                 else {
                     $scope.invalidChannelSelection = false;
+                    feedbackFactory.getFeedback().update($scope.feedback);
                     $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
                     $scope.feedback.mychannel="";
                     $scope.feedbackForm.$setPristine();
@@ -143,21 +144,22 @@ angular.module('confusionApp')
         .controller('IndexController', ['$scope', 'corporateFactory', 'menuFactory', function($scope, corporateFactory, menuFactory){
             
             //var featuredish = menuFactory.getDish(0);
-            $scope.featuredish = {};
+            //$scope.featuredish = {};
 
             $scope.showDish = false;
             $scope.message="Loading ...";
 
-            menuFactory.getDishes().get({id:0})
+            $scope.dish = menuFactory.getDishes().get({id:0})
                 .$promise.then(
                     function(response){
-                        $scope.featuredish = response;
+                        $scope.dish = response;
                         $scope.showDish = true;
+                        console.log("------------dish " + JSON.stringify($scope.dish));
                     },
                     function(response) {
                         $scope.message = "Error: "+response.status + " " + response.statusText;
                     }
-                );
+                );        
             //menuFactory.getDish(0)
             // .then(
             //     function(response){
@@ -203,7 +205,21 @@ angular.module('confusionApp')
 
         .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory){
             
-            $scope.leaders = corporateFactory.getLeaders();
-        }]);
+            //$scope.leaders = corporateFactory.getLeaders();
 
+            $scope.showLeaders = false;
+            $scope.message = "Loading ...";
+
+            corporateFactory.getLeaders().query(
+                function(response) {
+                    $scope.leaders = response;
+                    $scope.showLeaders = true;
+                },
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
+                }
+                );
+            
+        }])
+     
 ;

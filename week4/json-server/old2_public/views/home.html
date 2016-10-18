@@ -29,16 +29,13 @@
                 <h3 align=center>This Month's Promotions</h3>
             </div>
             <div class="col-xs-12 col-sm-9">
-                  <div ng-if="!showPromoted">
-                    <h3>{{messagePromotion}}</h3>
-                  </div>
-				          <div class="media-body">
+				<div class="media-body">
                         <h2 class="media-heading">{{promotion.name}}
                          <span class="label label-danger">{{promotion.label}}</span>
                          <span class="badge">{{promotion.price | currency}}</span></h2>
                          <p>{{promotion.description}}</p>
                   </div>
-                 <div class="media-middle media-right" ng-if="showPromoted">
+                 <div class="media-middle media-right">
                     <img class="media-object img-thumbnail"
                          ng-src={{promotion.image}} alt={{promotion.name}}>
                 </div>
@@ -51,13 +48,11 @@
                 <h3 align=center>Meet our Culinary Specialists</h3>
             </div>
             <div class="col-xs-12 col-sm-9 col-sm-pull-3">
-                <div ng-if="!showChef">
-                    <h3>{{messageChef}}</h3>
-                </div>
-		 		        <div class="media-left media-middle" ng-if="showChef">
+				 <div class="media-left media-middle">
                     <img class="media-object img-thumbnail"
                          ng-src={{executivechef.image}} alt={{executivechef.name}}>
-                </div>
+                     
+                  </div>
                 <div class="media-body">
                     <h2 class="media-heading">{{executivechef.name}}
                     <small>{{executivechef.designation}}</small></h2>
