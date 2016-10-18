@@ -184,7 +184,7 @@ angular.module('confusionApp')
 
             $scope.showChef = false;
             $scope.messageChef="Loading ...";
-            menuFactory.getLeaders().get({id:0})
+            menuFactory.getLeaders().get({id:3})
                 .$promise.then(
                     function(response){
                         $scope.executivechef = response;
