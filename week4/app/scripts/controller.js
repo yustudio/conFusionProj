@@ -149,12 +149,12 @@ angular.module('confusionApp')
             $scope.showDish = false;
             $scope.message="Loading ...";
 
-            $scope.dish = menuFactory.getDishes().get({id:0})
+            $scope.featuredish = menuFactory.getDishes().get({id:0})
                 .$promise.then(
                     function(response){
-                        $scope.dish = response;
+                        $scope.featuredish = response;
                         $scope.showDish = true;
-                        console.log("------------dish " + JSON.stringify($scope.dish));
+                        console.log("------------dish " + JSON.stringify($scope.featuredish));
                     },
                     function(response) {
                         $scope.message = "Error: "+response.status + " " + response.statusText;
@@ -186,7 +186,7 @@ angular.module('confusionApp')
 
             $scope.showChef = false;
             $scope.messageChef="Loading ...";
-            menuFactory.getLeaders().get({id:3})
+            corporateFactory.getLeaders().get({id:3})
                 .$promise.then(
                     function(response){
                         $scope.executivechef = response;

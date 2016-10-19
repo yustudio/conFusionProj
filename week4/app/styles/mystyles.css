@@ -1,4 +1,4 @@
-.row-header {
+.row-header {   /*class*/
   margin: 0px auto;
   padding: 0px 0px;
 }
@@ -70,7 +70,7 @@
   background-color: #303f9f;
   color: #eeeeee;
 }
-address {
+address {   /*tag*/
   color: #0f0f0f;
   font-size: 80%;
   margin: 0px;
@@ -89,7 +89,7 @@ body {
 .affix {
   top: 100px;
 }
-#carouselButtons {
+#carouselButtons {    /*id*/
   bottom: 0px;
   position: absolute;
   right: 0px;
