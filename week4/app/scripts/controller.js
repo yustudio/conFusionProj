@@ -98,7 +98,7 @@ angular.module('confusionApp')
             $scope.dish = {};
             $scope.showDish = false;
             $scope.message="Loading ...";
-            $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id,10)})
+            menuFactory.getDishes().get({id:parseInt($stateParams.id,10)})
             .$promise.then(
                 function(response){
                     $scope.dish = response;
@@ -124,20 +124,20 @@ angular.module('confusionApp')
 
         .controller('DishCommentController', ['$scope', 'menuFactory', function($scope,menuFactory) {
             
-            $scope.mycomment = {rating:5, comment:"", author:"", date:""};
+            $scope.commentitem = {rating:5, comment:"", author:"", date:""};
             
             $scope.submitComment = function () {
                 
-                $scope.mycomment.date = new Date().toISOString();
+                $scope.commentitem.date = new Date().toISOString();
                 console.log($scope.mycomment);
                 
-                $scope.dish.comments.push($scope.mycomment);
+                $scope.dish.comments.push($scope.commentitem);
 
                 menuFactory.getDishes().update({id:$scope.dish.id},$scope.dish);
                 
                 $scope.commentForm.$setPristine();
                 
-                $scope.mycomment = {rating:5, comment:"", author:"", date:""};
+                $scope.commentitem = {rating:5, comment:"", author:"", date:""};
             }
         }])
 

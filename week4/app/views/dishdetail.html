@@ -27,7 +27,7 @@
                  <div class="row">                   
                    <p> <strong>Customer Comments</strong>    Sort by: <input type="text" ng-model="sortfilter"> 
                    </p>           
-                
+                    <p> Sort Options: rating, comment, author, date <p>
                     <ul class="media-list">
                         <li class="media" ng-repeat="cmt in dish.comments|orderBy:sortfilter">
                            
@@ -47,7 +47,7 @@
             <div class="col-xs-9 col-xs-offset-1" ng-controller="DishCommentController">
                 <div class="row">
                     <ul class="list-unstyled">
-					   <li class="media">
+					             <li class="media">
                             <blockquote class="media-body" ng-show="!commentForm.commentcontent.$pristine && !commentForm.author.$pristine" >
                             <p>{{commentitem.rating}} Stars</p>
                             <p>{{commentitem.comment}}</p>
@@ -59,11 +59,13 @@
                 </div>
                 <form class="form-horizontal" name="commentForm"
                 		ng-submit="submitComment()" novalidate>
-					<div class="form-group" ng-class="{'has-error':commentForm.author.$error.required && !commentForm.author.$pristine}">
+					           <div class="form-group" ng-class="{'has-error':commentForm.author.$error.required && !commentForm.author.$pristine}">   
+          <!-- if author is modified but still empty, form has error; this disables the submit button later -->
                         <label for="author" class="col-sm-2 control-label">Name</Label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="author-id" name="author" placeholder="Enter Name" ng-model="commentitem.author" required>
-                            <span ng-show="commentForm.author.$error.required && !commentForm.author.$pristine" class="help-block"> Your name is required</span>
+                            <span ng-show="commentForm.author.$error.required && !commentForm.author.$pristine" class="help-block"> Your name is required</span>  
+                            <!-- if author is modified but still empty, pop a help block -->
                         </div>
                     </div>
                     <div class="form-group">
