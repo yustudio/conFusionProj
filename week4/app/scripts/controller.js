@@ -129,7 +129,7 @@ angular.module('confusionApp')
             $scope.submitComment = function () {
                 
                 $scope.commentitem.date = new Date().toISOString();
-                console.log($scope.mycomment);
+                console.log($scope.commentitem);
                 
                 $scope.dish.comments.push($scope.commentitem);
 
